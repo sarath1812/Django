@@ -5,7 +5,9 @@ from . import views
 
 urlpatterns=[
     #re_path(r'^department$',views.departmentApi)
-    path('',views.testData,name = 'test')
+    path('',views.testData,name = 'test'),
+    path('json/',views.jsonData,name = 'test')
+
 ]
 
 

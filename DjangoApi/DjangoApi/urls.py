@@ -5,7 +5,8 @@ from django.conf.urls import re_path as path , include
 
 urlpatterns = [ 
     path('admin/', admin.site.urls),
-    path('',include('cms.urls'))
+    path('',include('cms.urls')),
+    path('json/',include('cms.urls'))
 ]
 
 # Contain all the url declerations needed for this project.

@@ -1,0 +1,66 @@
+[1mdiff --git a/DjangoApi/DjangoApi/__pycache__/urls.cpython-311.pyc b/DjangoApi/DjangoApi/__pycache__/urls.cpython-311.pyc[m
+[1mindex 5785c55..3f61c32 100644[m
+Binary files a/DjangoApi/DjangoApi/__pycache__/urls.cpython-311.pyc and b/DjangoApi/DjangoApi/__pycache__/urls.cpython-311.pyc differ
+[1mdiff --git a/DjangoApi/DjangoApi/urls.py b/DjangoApi/DjangoApi/urls.py[m
+[1mindex 44a47dd..6d8efe9 100644[m
+[1m--- a/DjangoApi/DjangoApi/urls.py[m
+[1m+++ b/DjangoApi/DjangoApi/urls.py[m
+[36m@@ -5,7 +5,8 @@[m [mfrom django.conf.urls import re_path as path , include[m
+ [m
+ urlpatterns = [ [m
+     path('admin/', admin.site.urls),[m
+[31m-    path('',include('cms.urls'))[m
+[32m+[m[32m    path('',include('cms.urls')),[m
+[32m+[m[32m    path('json/',include('cms.urls'))[m
+ ][m
+ [m
+ # Contain all the url declerations needed for this project.[m
+[1mdiff --git a/DjangoApi/cms/__pycache__/urls.cpython-311.pyc b/DjangoApi/cms/__pycache__/urls.cpython-311.pyc[m
+[1mindex 1162ed7..28c709b 100644[m
+Binary files a/DjangoApi/cms/__pycache__/urls.cpython-311.pyc and b/DjangoApi/cms/__pycache__/urls.cpython-311.pyc differ
+[1mdiff --git a/DjangoApi/cms/__pycache__/views.cpython-311.pyc b/DjangoApi/cms/__pycache__/views.cpython-311.pyc[m
+[1mindex fdf4be8..960d8d7 100644[m
+Binary files a/DjangoApi/cms/__pycache__/views.cpython-311.pyc and b/DjangoApi/cms/__pycache__/views.cpython-311.pyc differ
+[1mdiff --git a/DjangoApi/cms/urls.py b/DjangoApi/cms/urls.py[m
+[1mindex 24e3089..6ffffee 100644[m
+[1m--- a/DjangoApi/cms/urls.py[m
+[1m+++ b/DjangoApi/cms/urls.py[m
+[36m@@ -5,7 +5,9 @@[m [mfrom . import views[m
+ [m
+ urlpatterns=[[m
+     #re_path(r'^department$',views.departmentApi)[m
+[31m-    path('',views.testData,name = 'test')[m
+[32m+[m[32m    path('',views.testData,name = 'test'),[m
+[32m+[m[32m    path('json/',views.jsonData,name = 'test')[m
+[32m+[m
+ ][m
+ [m
+ [m
+[1mdiff --git a/DjangoApi/cms/views.py b/DjangoApi/cms/views.py[m
+[1mindex 4f171d9..910b617 100644[m
+[1m--- a/DjangoApi/cms/views.py[m
+[1m+++ b/DjangoApi/cms/views.py[m
+[36m@@ -18,5 +18,21 @@[m [mdef departmentApi(request , id = 0):[m
+         departments = Department.objects.all()[m
+         dep_Serializer = DepartmentSerializer(departments,many = True)[m
+         return JsonResponse(dep_Serializer.data,safe=False)[m
+[32m+[m[41m    [m
+ def testData(request): [m
+[31m-    return HttpResponse('<h1>Hello sarath</h1>')[m
+[32m+[m[32m    return HttpResponse('<h1>Hey Buddy this peice of code in running using the python and Django</h1>')[m
+[32m+[m
+[32m+[m[32mdef jsonData(request):[m[41m [m
+[32m+[m
+[32m+[m[32m    return JsonResponse({[m
+[32m+[m[32m   "username" : "my_username",[m
+[32m+[m[32m   "password" : "my_password",[m
+[32m+[m[32m   "validation-factors" : {[m
+[32m+[m[32m      "validationFactors" : [[m
+[32m+[m[32m         {[m
+[32m+[m[32m            "name" : "remote_address",[m
+[32m+[m[32m            "value" : "127.0.0.1"[m
+[32m+[m[32m         }[m
+[32m+[m[32m      ][m
+[32m+[m[32m   }[m
+[32m+[m[32m})[m
+\ No newline at end of file[m

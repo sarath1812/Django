@@ -18,5 +18,21 @@ def departmentApi(request , id = 0):
         departments = Department.objects.all()
         dep_Serializer = DepartmentSerializer(departments,many = True)
         return JsonResponse(dep_Serializer.data,safe=False)
+    
 def testData(request): 
-    return HttpResponse('<h1>Hello sarath</h1>')
+    return HttpResponse('<h1>Hey Buddy this peice of code in running using the python and Django</h1>')
+
+def jsonData(request): 
+
+    return JsonResponse({
+   "username" : "my_username",
+   "password" : "my_password",
+   "validation-factors" : {
+      "validationFactors" : [
+         {
+            "name" : "remote_address",
+            "value" : "127.0.0.1"
+         }
+      ]
+   }
+})
